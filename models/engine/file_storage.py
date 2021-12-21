@@ -13,8 +13,8 @@ class FileStorage:
         if cls is None:
             return FileStorage.__objects
         dict_cls = {}
-        for k, v in FileStorage.__objects.items():
-            if cls.__name__ == v.__class__.__name__:
+        for k, v in self.__objects.items():
+            if v.__class__ == cls:
                 dict_cls[k] = v
             return dict_cls
 
@@ -57,7 +57,10 @@ class FileStorage:
 
     def delete(self, obj=None):
         """ Method to delete objects """
+        from models.base_model import BaseModel
         if obj is None:
             pass
-        key = "{}.{}".format(type(obj).__name__, obj.id)
-        del FileStorage.__objects[key]
+        else:
+            key = "{}.{}".format(type(obj).__name__, obj.id)
+            del self.__objects[key]
+            self.save()

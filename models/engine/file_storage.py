@@ -13,7 +13,10 @@ class FileStorage:
         if cls is None:
             return FileStorage.__objects
         else:
-            self.__objects = cls
+            dict_cls = {}
+            for k, v in FileStorage.__objects.items():
+                if v.__class__ == cls:
+                    dict_cls[k] = [v]
             return FileStorage.__objects
 
     def new(self, obj):
@@ -61,3 +64,4 @@ class FileStorage:
             pass
         else:
             del obj
+            self.save()

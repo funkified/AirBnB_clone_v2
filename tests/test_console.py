@@ -93,5 +93,6 @@ class TestConsole(unittest.TestCase):
             self.assertEqual(
                 "[[User]", f.getvalue()[:7])
 
+
 if __name__ == "__main__":
     unittest.main()

@@ -14,7 +14,7 @@ class FileStorage:
             return FileStorage.__objects
         dict_cls = {}
         for k, v in self.__objects.items():
-            if v.__class__ == cls:
+            if v.__class__.__name__ == cls.__name__:
                 dict_cls[k] = v
                 return dict_cls
 

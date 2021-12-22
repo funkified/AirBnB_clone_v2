@@ -4,8 +4,7 @@ Module: DB_Storage
 Database engine to manage data
 """
 
-import os
-from sqlalquemy.orm import sessionmaker, scoped_session
+from os import getenv
 from sqlalquemy import create_engine, Metadata
 from models.base_model import BaseModel
 from models.state import State

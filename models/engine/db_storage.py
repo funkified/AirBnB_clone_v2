@@ -4,17 +4,16 @@ Module: DB_Storage
 Database engine to manage data
 """
 
-<<<<<<< HEAD
+
 from os import getenv
-from sqlalquemy import create_engine, Metadata
 from models.base_model import BaseModel
-=======
 from sqlalchemy import create_engine, MetaData
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine
 from sqlalchemy.orm.scoping import scoped_session
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
->>>>>>> 5acefeff6f2412feb2e53df9529a97b8601146dd
 from models.state import State
 from models.city import City
 from models.user import User
@@ -26,12 +25,12 @@ class DBStorage():
     """
     __engine = None
     __session = None
-
+    """
     classes = {
                 'BaseModel': BaseModel, 'User': User, 'Place': Place,
                 'State': State, 'City': City
                 }
-
+    """
     def __init__(self):
         """"""""
         User = getenv('HBNB_MYSQL_USER')
@@ -46,16 +45,16 @@ class DBStorage():
 
         if Env == 'test':
             """ Drop all tables """
-            Base.metedata.drop_all(self.__engine)
+            Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """"""
         dict_cls = {}
 
         if cls:
-            for k, v in self.__objects.items():
-                if v.__class__.__name == cls.__name__:
-                    dict_cls[k] = v
+            for obj in self.__session.query(cls).all():
+                if obj.__class__.__name == cls.__name__:
+                    dict_cls[k] = obj
             return dict_cls
         else:
             return DB_Storage.__objects

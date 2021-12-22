@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
                'State': State, 'City': City, 'Amenity': Amenity,
                'Review': Review
               }
-    dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
+    dot_cmds = ['add', 'all', 'count', 'show', 'destroy', 'update']
     types = {
              'number_rooms': int, 'number_bathrooms': int,
              'max_guest': int, 'price_by_night': int,
@@ -91,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints if isatty is false"""
         if not sys.__stdin__.isatty():
             print('(hbnb) ', end='')
-        return stop
+        return line
 
     def do_quit(self, command):
         """ Method to exit the HBNB console"""
@@ -132,10 +132,13 @@ class HBNBCommand(cmd.Cmd):
                 except Exception:
                     pass
                 setattr(new_instance, x.split("=")[0], param)
+           # new_instance.save()
+            print(new_instance.id)
+        """
         new_instance.save()
         print(new_instance.id)
         storage.save()
-
+        """
     def help_create(self):
         """ Help information for the create method """
         print("Creates a class of any type")

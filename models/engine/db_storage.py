@@ -57,7 +57,7 @@ class DBStorage():
                     dict_cls[k] = obj
             return dict_cls
         else:
-            return DB_Storage.__objects
+            return dict_cls
 
     def new(self, obj):
         """
@@ -88,4 +88,4 @@ class DBStorage():
         session_factory = sessionmaker(
                 bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
-        self._session = Session()
+        self.__session = Session()

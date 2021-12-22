@@ -57,7 +57,7 @@ class FileStorage:
 
     def delete(self, obj=None):
         """ Method to delete objects """
-        from models.base_model import BaseModel
+       # from models.base_model import BaseModel
         if obj is None:
             pass
         else:

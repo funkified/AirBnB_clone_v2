@@ -132,13 +132,13 @@ class HBNBCommand(cmd.Cmd):
                 except Exception:
                     pass
                 setattr(new_instance, x.split("=")[0], param)
-           # new_instance.save()
-            print(new_instance.id)
+        """     new_instance.save()
+            print(new_instance.id) 
         """
         new_instance.save()
         print(new_instance.id)
         storage.save()
-        """
+        
     def help_create(self):
         """ Help information for the create method """
         print("Creates a class of any type")

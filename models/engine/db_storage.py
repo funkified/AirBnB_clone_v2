@@ -5,10 +5,8 @@ Database engine to manage data
 """
 
 
-from os import getenv
-from models.base_model import BaseModel
-from sqlalchemy import create_engine, MetaData
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy import create_engine
 from sqlalchemy.orm.scoping import scoped_session
 from sqlalchemy.orm import sessionmaker
@@ -20,7 +18,7 @@ from models.user import User
 from models.place import Place
 from os import getenv
 
-class DBStorage():
+class DBStorage:
     """
     """
     __engine = None
@@ -51,10 +49,10 @@ class DBStorage():
         """"""
         dict_cls = {}
 
-        if cls:
+        if cls is not None:
             for obj in self.__session.query(cls).all():
-                if obj.__class__.__name == cls.__name__:
-                    dict_cls[k] = obj
+                key = "{}.{}".format(obj.__class__.__name__, obj.id)
+                dict_cls[key] = obj
             return dict_cls
         else:
             return dict_cls
@@ -63,7 +61,8 @@ class DBStorage():
         """
         add the object to current database session
         """
-        if obj:
+        print(obj)
+        if obj is not None:
             self.__session.add(obj)
 
     def save(self):

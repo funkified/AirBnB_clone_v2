@@ -43,7 +43,7 @@ class BaseModel:
                                                          '.%f')
             if '__class__' in kwargs:
                 del kwargs['__class__']
-#            self.__dict__.update(kwargs)
+            self.__dict__.update(kwargs)
 
             for key, val in kwargs.items():
                 setattr(self, key, val)

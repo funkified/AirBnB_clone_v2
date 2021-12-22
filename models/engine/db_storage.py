@@ -28,10 +28,10 @@ class DBStorage():
 
     def __init__(self):
         """"""""
-        User = HBNB_MYSQL_USER
-        Password = HBNB_MYSQL_PWD
-        Host = HBNB_MYSQL_HOST = localhost
-        Database = HBNB_MYSQL_DB
+        User = getenv(HBNB_MYSQL_USER)
+        Password = getenv(HBNB_MYSQL_PWD)
+        Host = getenv(HBNB_MYSQL_HOST='localhost')
+        Database = getenv(HBNB_MYSQL_DB)
 
         self.__engine = create_engine('mysql+mysqldv:// {}{}:{}/{}'.format(
                                       User, Password, Host, Database),

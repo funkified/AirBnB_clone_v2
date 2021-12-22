@@ -5,6 +5,8 @@ City Module for HBNB project
 import models
 from models.base_model import BaseModel
 from models.base_model import Base
+from sqlalchemy import Column, String, Integer, ForeignKey
+
 
 
 class City(BaseModel, Base):

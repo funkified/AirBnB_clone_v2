@@ -4,14 +4,22 @@ Module: DB_Storage
 Database engine to manage data
 """
 
+<<<<<<< HEAD
 from os import getenv
 from sqlalquemy import create_engine, Metadata
 from models.base_model import BaseModel
+=======
+from sqlalchemy import create_engine, MetaData
+from sqlalchemy.orm.scoping import scoped_session
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import relationship
+from models.base_model import BaseModel, Base
+>>>>>>> 5acefeff6f2412feb2e53df9529a97b8601146dd
 from models.state import State
 from models.city import City
 from models.user import User
 from models.place import Place
-
+from os import getenv
 
 class DBStorage():
     """
@@ -21,22 +29,22 @@ class DBStorage():
 
     classes = {
                 'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                'State': State, 'City': City, 'Amenity': Amenity,
-                'Review': Review
-               }
+                'State': State, 'City': City
+                }
 
     def __init__(self):
         """"""""
-        User = HBNB_MYSQL_USER
-        Password = HBNB_MYSQL_PWD
-        Host = HBNB_MYSQL_HOST = localhost
-        Database = HBNB_MYSQL_DB
+        User = getenv('HBNB_MYSQL_USER')
+        Password = getenv('HBNB_MYSQL_PWD')
+        Host = getenv('HBNB_MYSQL_HOST')
+        Database = getenv('HBNB_MYSQL_DB')
+        Env = getenv('HBNB_ENV')
 
-        self.__engine = create_engine('mysql+mysqldv:// {}{}:{}/{}'.format(
+        self.__engine = create_engine('mysql+mysqldb:// {}: {}@{}:3306/{}'.format(
                                       User, Password, Host, Database),
                                       pool_pre_ping=True)
 
-        if HBNB_ENV == 'test':
+        if Env == 'test':
             """ Drop all tables """
             Base.metedata.drop_all(self.__engine)
 
@@ -56,9 +64,8 @@ class DBStorage():
         """
         add the object to current database session
         """
-        if not obj:
-            return
-        self.__session.add(obj)
+        if obj:
+            self.__session.add(obj)
 
     def save(self):
         """

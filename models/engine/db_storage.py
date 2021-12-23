@@ -55,6 +55,11 @@ class DBStorage:
                 dict_cls[key] = obj
             return dict_cls
         else:
+            for sub_cls in self.__sublclasses___:
+                for obj in Base.__session.query(sub_cls).all():
+                    key = "{}.{}".format(sub_cls.__class__.__name__, sub_cls)
+                    dict_cls[key] = sub_cls
+                    # print(dict_cls[key])
             return dict_cls
 
     def new(self, obj):

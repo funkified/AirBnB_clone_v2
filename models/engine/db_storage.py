@@ -53,7 +53,7 @@ class DBStorage:
             for obj in self.__session.query(cls).all():
                 key = "{}.{}".format(obj.__class__.__name__, obj.id)
                 dict_cls[key] = obj
-        """ return dict_cls """
+          # return dict_cls
         else:
             for sub_cls in Base.__subclasses___:
                 for obj in self.__session.query(sub_cls).all():
@@ -75,7 +75,6 @@ class DBStorage:
         Commit all changes of the current database session
         """
         self.__session.commit()
-#        self.__session.close()
 
     def delete(self, obj=None):
         """
@@ -94,7 +93,3 @@ class DBStorage:
                 bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
-
-        def exit(self):
-            """ Close the session """
-            self.__session.close()

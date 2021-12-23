@@ -20,7 +20,6 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-
         @property
         def cities(self):
             """"""
@@ -31,4 +30,3 @@ class State(BaseModel, Base):
                 if value.state_id == state_id:
                     list_cities.append(value)
             return list_cities
-

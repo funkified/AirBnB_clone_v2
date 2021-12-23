@@ -3,8 +3,6 @@
 Module: DB_Storage
 Database engine to manage data
 """
-
-
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy import create_engine
@@ -17,6 +15,7 @@ from models.city import City
 from models.user import User
 from models.place import Place
 from os import getenv
+
 
 class DBStorage:
     """
@@ -37,8 +36,8 @@ class DBStorage:
         Database = getenv('HBNB_MYSQL_DB')
         Env = getenv('HBNB_ENV')
 
-        self.__engine = create_engine('mysql+mysqldb:// {}: {}@{}:3306/{}'.format(
-                                      User, Password, Host, Database),
+        self.__engine = create_engine('mysql+mysqldb:// {}: {}@{}:3306/{}'.
+                                      format(User, Password, Host, Database),
                                       pool_pre_ping=True)
 
         if Env == 'test':

@@ -14,6 +14,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
 
@@ -133,12 +134,12 @@ class HBNBCommand(cmd.Cmd):
                     pass
                 setattr(new_instance, x.split("=")[0], param)
         """     new_instance.save()
-            print(new_instance.id) 
+            print(new_instance.id)
         """
         new_instance.save()
         print(new_instance.id)
         storage.save()
-        
+
     def help_create(self):
         """ Help information for the create method """
         print("Creates a class of any type")

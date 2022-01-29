@@ -45,7 +45,7 @@ def python_route(text='is cool'):
     return 'Python %s' % text.replace('_', ' ')
 
 
-@app.route('/number/int:<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def number_route(n):
     """ returns an integer """
     return ("{} is a number".format(n))

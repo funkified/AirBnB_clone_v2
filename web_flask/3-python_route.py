@@ -33,7 +33,7 @@ def c_route(text):
     """
     diplays C
     """
-    return 'C %s' % escape(text)
+    return 'C %s' % replace.text('_', ' ')
 
 
 @app.route('/python')

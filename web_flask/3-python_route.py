@@ -16,6 +16,7 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def hello_route():
+    """ display Hello HBNB """
     return 'Hello HBNB!'
 
 
@@ -45,4 +46,5 @@ def python_route(text='is_cool'):
 
 
 if __name__ == '__main__':
+    """ run Flask app """
     app.run(host='0.0.0.0', port=5000)

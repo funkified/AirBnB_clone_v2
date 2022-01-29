@@ -38,7 +38,7 @@ def c_route(text):
 
 @app.route('/python')
 @app.route('/python/<text>', strict_slashes=False)
-def python_route(text='is_cool'):
+def python_route(text='is cool'):
     """
     diplays Python route
     """

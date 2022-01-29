@@ -33,7 +33,7 @@ def c_route(text):
     """
     diplays C
     """
-    return 'C %s' % escape(text)
+    return 'C %s' % text.replace('_', ' ')
 
 
 if __name__ == '__main__':

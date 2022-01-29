@@ -59,4 +59,4 @@ def number_template(n):
 
 if __name__ == '__main__':
     """ run Flask app """
-    app.run(host='0.0.0.0', port=5055)
+    app.run(host='0.0.0.0', port=5000)

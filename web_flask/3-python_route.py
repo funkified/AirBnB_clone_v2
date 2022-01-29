@@ -36,7 +36,7 @@ def c_route(text):
     return 'C %s' % replace.text('_', ' ')
 
 
-@app.route('/python')
+@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_route(text='is cool'):
     """

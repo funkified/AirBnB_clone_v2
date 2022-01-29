@@ -42,7 +42,7 @@ def python_route(text='is_cool'):
     """
     diplays Python route
     """
-    return 'Python %s' % escape(text.replace('_', ' '))
+    return 'Python %s' % text.replace('_', ' ')
 
 
 if __name__ == '__main__':

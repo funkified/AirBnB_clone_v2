@@ -13,12 +13,22 @@ from flask import Flask, escape
 
 app = Flask(__name__)
 
+
+@app.route('/', strict_slashes=False)
+def hello_route():
+    """
+    display Hello HBNB!
+    """
+    return 'Hello HBNB!'
+
+
 @app.route('/c/<text>', strict_slashes=False)
-def c_display(text):
+def c_route(text):
     """
     diplays C
     """
     return 'C %s' % escape(text)
 
-if __name__=='__main__':
-    app.run(host='0.0.0.0', port=4044)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)

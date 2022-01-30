@@ -4,8 +4,8 @@ Runs Flash Application
 """
 from models import storage
 from models.state import State
-from flask import Flsk, render_template
-app = Flash(__name__)
+from flask import Flask, render_template
+app = Flask(__name__)
 
 
 @app.teardown_appcontext
@@ -17,7 +17,7 @@ def teardown_data(self):
 @app.route('/states_list',strict_slashes=False)
 def index():
     """displays html plage"""
-    data = storage.all('State')
+    data = storage.all(State)
     return render_template('7-states_list.html', data=data)
 
 

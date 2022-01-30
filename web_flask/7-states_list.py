@@ -14,7 +14,7 @@ def teardown_data(self):
     return storage.close()
 
 
-@app.route('/states_list',strict_slashes=False)
+@app.route('/states_list', strict_slashes=False)
 def index():
     """displays html plage"""
     data = storage.all(State)

@@ -18,7 +18,7 @@ def teardown_data(self):
 @app.route('/cities_by_states', strict_slashes=False)
 def index():
     """displays html plage"""
-    data = storage.all(City)
+    data = storage.all('State')
     return render_template('8-cities_by_states.html', data=data)
 
 

@@ -2,6 +2,7 @@
 """ Module that start a Flask Webb app"""
 from flask import Flask, render_template
 from models import storage
+from models.state import State
 app = Flask(__name__)
 
 
@@ -15,7 +16,7 @@ def teardown_data(self):
 @app.route('/states/<id>', strict_slashes=False)
 def index(id=None):
     """display a HTML page"""
-    data = storage.all("State")
+    data = storage.all(State)
     return render_template('9-states.html', states=data, id=id)
 
 

@@ -61,14 +61,14 @@ def odd_or_even(n):
 @app.route('/states_list', strict_slashes=False)
 def state_list():
     """displays html plage"""
-    data = storage.all(State).values()
+    data = storage.all(State)
     return render_template('7-states_list.html', data=data)
 
 
 @app.route('/cities_by_states', strict_slashes=False)
 def city_list():
     """displays html plage"""
-    data = storage.all(State).values()
+    data = storage.all(State)
     return render_template('8-cities_by_states.html', data=data)
 
 

@@ -58,12 +58,6 @@ def odd_or_even(n):
         return render_template('6-number_odd_or_even.html', n=n)
 
 
-@app.teardown_appcontext
-def teardown_data(self):
-    """ remove current SQLAlchemy Session """
-    return storage.close()
-
-
 @app.route('/states_list', strict_slashes=False)
 def state_list():
     """displays html plage"""
@@ -76,6 +70,12 @@ def city_list():
     """displays html plage"""
     data = storage.all(State).values()
     return render_template('8-cities_by_states.html', data=data)
+
+
+@app.teardown_appcontext
+def teardown_data(self):
+    """ remove current SQLAlchemy Session """
+    return storage.close()
 
 
 if __name__ == '__main__':
